@@ -23,30 +23,7 @@ public class CreateFunctionTest {
 		
 		Response response= rs.post("https://httpbin.org/post");
 		System.out.println(response.prettyPrint()); 
-//		
-//		int statuscode =response.statusCode();
-//		System.out.println("Status code ="+statuscode);
-//		
 		SoftAssert sa = new SoftAssert();
-//		sa.assertEquals(statuscode, 200);
-//		
-//		//response time (long same as int)
-//		long responseTime =response.time();
-//		System.out.println("Response time ="+responseTime);
-//		sa.assertTrue(responseTime <3000);
-//		
-//		//Data format Json or not
-//		String dataformat =response.contentType();
-//		System.out.println(dataformat);
-//		sa.assertTrue(dataformat.contains("json"));
-//		
-//		//Body 
-//			//Body = null or not null ********
-//		boolean bodyDataNotNull=!response.body().equals(null);// not null =true
-//		System.out.println(bodyDataNotNull);
-//		sa.assertTrue(bodyDataNotNull);
-//			// Body >> test data >> specific test data based on requirement ==> employee Name=Sarower
-//					// Rest Assured limitation = can not go inside json file ==> JsonPath
 		JsonPath jp =response.jsonPath();
 		System.out.println(jp.get("json.Batch").toString());
 		sa.assertEquals(jp.get("headers.Host").toString(), "httpbin.org");
